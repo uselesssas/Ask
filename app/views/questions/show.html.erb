@@ -1,9 +1,14 @@
-<h1 class="mb-4"><%= @question.title %></h1>
+<%# Вопрос %>
+<div>
+  <h1 class="mb-4"><%= @question.title %></h1>
 
-<time datetime="<%= @question.formatted_created_at %>">
-  <%= @question.formatted_created_at %>
-</time>
+  <time datetime="<%= @question.formatted_created_at %>">
+    <%= @question.formatted_created_at %>
+  </time>
 
-<p class="lead my-3"><%= @question.body %></p>
+  <p class="lead my-3"><%= @question.body %></p>
+</div>
 
-<%= link_to 'Back', questions_path, class: 'btn btn-primary' %>
+<%= link_to 'Edit', edit_question_path(@question), class: 'btn btn-primary' %>
+<%= link_to 'Delete', question_path(@question), data: { method: :delete, confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<%= link_to 'Back', questions_path, class: 'btn btn-secondary' %>

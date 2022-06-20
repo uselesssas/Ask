@@ -1,13 +1,13 @@
 class QuestionsController < ApplicationController
+  before_action :set_question!, only: %i[show destroy edit update]
+
   def index
     # Массив со всеми вопросами
     @questions = Question.all
   end
 
-  def show
-    # Ищет вопрос по id
-    @question = Question.find params[:id]
-  end
+  # Ищет вопрос по id
+  def show; end
 
   def new
     # Инициализируем новый объект
@@ -26,7 +26,33 @@ class QuestionsController < ApplicationController
     end
   end
 
+  # Ищет вопрос по id
+  def edit; end
+
+  # Изменяет вопрос в БД
+  def update
+    if @question.update question_params
+      flash[:success] = 'Question update!'
+      redirect_to questions_path
+    else
+      render :edit
+    end
+  end
+
+  # Удаляет вопрос из БД
+  def destroy
+    @question.destroy
+    flash[:success] = 'Question deleted!'
+    redirect_to questions_path
+  end
+
   private
+
+  # Выдаёт ошибку если не находит вопрос
+  # Ищет вопрос по id
+  def set_question!
+    @question = Question.find params[:id]
+  end
 
   # Фильтрация params
   def question_params
