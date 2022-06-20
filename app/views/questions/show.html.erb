@@ -1,0 +1,9 @@
+<h1 class="mb-4"><%= @question.title %></h1>
+
+<time datetime="<%= @question.formatted_created_at %>">
+  <%= @question.formatted_created_at %>
+</time>
+
+<p class="lead my-3"><%= @question.body %></p>
+
+<%= link_to 'Back', questions_path, class: 'btn btn-primary' %>

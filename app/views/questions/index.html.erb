@@ -1,5 +1,8 @@
 <h1 class="mb-4">Questions</h1>
 
+<%= link_to 'Ask a new question', new_question_path, class: 'btn btn-outline-dark' %>
+
+<%# Карточки с вопросами %>
 <% @questions.each do |question| %>
   <article class="card mt-2">
     <div class="card-body">
@@ -12,6 +15,8 @@
 
         <p class="my-2"><%= question.body %></p>
       </section>
+
+      <%= link_to 'Show', question_path(question), class: 'btn btn-primary' %>
     </div>
   </article>
 <% end %>
