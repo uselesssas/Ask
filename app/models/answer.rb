@@ -1,8 +1,7 @@
-class Question < ApplicationRecord
+class Answer < ApplicationRecord
   # Связь с таблицей Question 1:М Answer
-  has_many :answers, dependent: :destroy
+  belongs_to :question
 
-  validates :title, presence: true, length: { minimum: 2 }
   validates :body, presence: true, length: { minimum: 2 }
 
   def formatted_created_at

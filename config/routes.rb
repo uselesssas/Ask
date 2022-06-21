@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :questions
+  resources :questions, only: %i[index show new create edit update destroy] do
+    resources :answers, expect: %i[index show new]
+  end
 
   root 'welcome#index'
 end

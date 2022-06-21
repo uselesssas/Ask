@@ -1,22 +1,27 @@
 class QuestionsController < ApplicationController
-  before_action :set_question!, only: %i[show destroy edit update]
+  before_action :set_question!, only: %i[show edit update destroy]
 
   def index
-    # Массив со всеми вопросами
+    # Массив со всеми questions
     @questions = Question.all
   end
 
-  # Ищет вопрос по id
-  def show; end
+  def show
+    # Ищет question по id
+    # Инициализируем новый несохранённый answer
+    @answer = @question.answers.build
+    # Массив со всеми answers сортированный по дате
+    @answers = @question.answers.order created_at: :desc
+  end
 
   def new
-    # Инициализируем новый объект
+    # Инициализируем новый несохранённый question
     @question = Question.new
   end
 
-  # Создаёт вопрос в БД
   def create
     # render plain: params - Отображает отправленные данные
+    # Сохраняет question в БД
     @question = Question.new question_params
     if @question.save
       flash[:success] = 'Question created!'
@@ -26,11 +31,12 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # Ищет вопрос по id
+  # Ищет question по id
   def edit; end
 
-  # Изменяет вопрос в БД
   def update
+    # Ищет question по id
+    # Изменяет question в БД
     if @question.update question_params
       flash[:success] = 'Question update!'
       redirect_to questions_path
@@ -39,8 +45,9 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # Удаляет вопрос из БД
   def destroy
+    # Ищет question по id
+    # Удаляет question из БД
     @question.destroy
     flash[:success] = 'Question deleted!'
     redirect_to questions_path
@@ -48,13 +55,13 @@ class QuestionsController < ApplicationController
 
   private
 
-  # Выдаёт ошибку если не находит вопрос
-  # Ищет вопрос по id
+  # Выдаёт ошибку если не находит question
   def set_question!
+    # Ищет question по id
     @question = Question.find params[:id]
   end
 
-  # Фильтрация params
+  # Фильтрация params для question
   def question_params
     params.require(:question).permit(:title, :body)
   end
