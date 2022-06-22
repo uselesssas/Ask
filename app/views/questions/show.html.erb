@@ -20,8 +20,10 @@
 <%# Форма создания ответа для конкретного вопроса %>
 <%= render 'answers/form' %>
 
+<hr class="my-3">
+
 <%# Ответы %>
-<h2 class="mt-4">Answers</h2>
+<h2 class="mt-3">Answers</h2>
 <% @answers.each do |a| %>
   <article class="mb-3">
     <time datetime="<%= a.formatted_created_at %>">

@@ -4,11 +4,11 @@ class AnswersController < ApplicationController
 
   def create
     # render plain: params - Отображает отправленные данные
-    # Ищет question по таблице Answer по question_id
+    # Ищет question из таблицы Answer по question_id
     # Сохраняет answer в БД
     @answer = @question.answers.build answer_params
     if @answer.save
-      flash[:success] = 'Answer created'
+      flash[:success] = 'Answer created!'
       redirect_to question_path(@question)
     else
       # Массив со всеми answers сортированный по дате
@@ -17,7 +17,7 @@ class AnswersController < ApplicationController
     end
   end
 
-  # Ищет question по таблице Answer по question_id
+  # Ищет question из таблицы Answer по question_id
   def edit; end
 
   def update
@@ -32,10 +32,10 @@ class AnswersController < ApplicationController
   end
 
   def destroy
-    # Ищет question по таблице Answer по question_id
+    # Ищет question из таблицы Answer по question_id
     # Удаляет answer из БД
     @answer.destroy
-    flash[:success] = 'Answer deleted'
+    flash[:success] = 'Answer deleted!'
     redirect_to question_path(@question)
   end
 
