@@ -1,6 +1,9 @@
 <%# title %>
 <% provide :page_title, @question.title %>
 
+<%# header меню %>
+<% currently_at 'Questions' %>
+
 <%# Вопрос %>
 <div>
   <h1 class="mb-4"><%= @question.title %></h1>

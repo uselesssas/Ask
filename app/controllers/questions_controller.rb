@@ -12,6 +12,8 @@ class QuestionsController < ApplicationController
     @answer = @question.answers.build
     # Массив со всеми answers сортированный по дате
     @answers = @question.answers.order created_at: :desc
+    # Массив со всеми answers сортированный по дате
+    # @answers = Answer.where(question_id: @question.id).order created_at: :desc
   end
 
   def new
