@@ -38,3 +38,5 @@
 <%# as: :answer - имя элементов коллекции %>
 <%# locals: {question: @question} - передаём в partial _answer переменную @question %>
 <%= render partial: 'answers/answer', collection: @answers, as: :answer, locals: {question: @question} %>
+
+<%= paginate @answers %>

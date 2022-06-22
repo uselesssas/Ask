@@ -9,6 +9,8 @@
 <%# Ссылка на форму создания и редактирования нового вопроса %>
 <%= link_to 'Ask a new question', new_question_path, class: 'btn btn-outline-dark' %>
 
+<%= paginate @questions %>
+
 <%# Карточки с вопросами %>
 <% @questions.each do |question| %>
   <article class="card mt-2">
@@ -31,3 +33,5 @@
     </div>
   </article>
 <% end %>
+
+<%= paginate @questions %>
