@@ -14,7 +14,7 @@ class AnswersController < ApplicationController
       redirect_to question_path(@question)
     else
       # Массив со всеми answers сортированный по дате
-      @answers = @question.answers.order created_at: :desc
+      @pagy, @answers = pagy @question.answers.order(created_at: :desc)
       render 'questions/show'
     end
   end

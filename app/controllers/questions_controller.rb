@@ -2,8 +2,7 @@ class QuestionsController < ApplicationController
   before_action :set_question!, only: %i[show edit update destroy]
 
   def index
-    # Массив со всеми questions сортированный по дате
-    @questions = Question.order(created_at: :desc).page params[:page]
+    @pagy, @questions = pagy Question.order(created_at: :desc)
   end
 
   def show
@@ -11,8 +10,8 @@ class QuestionsController < ApplicationController
     # Инициализируем новый несохранённый answer
     @answer = @question.answers.build
     # Массив со всеми answers сортированный по дате
-    @answers = @question.answers.order(created_at: :desc).page(params[:page]).per(2)
-    # Массив со всеми answers сортированный по дате
+    @pagy, @answers = pagy @question.answers.order(created_at: :desc), items: 2
+    # Массив со всеми answers сортированный по дате 2 способ
     # @answers = Answer.where(question_id: @question.id).order created_at: :desc
   end
 

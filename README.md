@@ -20,7 +20,7 @@ application.js
 
 * Ruby version: 3.1.2
 * Rails version: ~> 7
-* Added gems: kaminari ~> 1, faker ~> 2
+* Added gems: pagy ~> 5, faker ~> 2
 * CSS: bootstrap
 * JS: webpack
 * Database: sqlite3 (In the future there will be PostgreSQL)
