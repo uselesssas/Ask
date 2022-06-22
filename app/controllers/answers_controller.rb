@@ -25,7 +25,7 @@ class AnswersController < ApplicationController
     # Изменяет answer в БД
     if @answer.update answer_params
       flash[:success] = 'Answer update!'
-      redirect_to question_path(@question)
+      redirect_to question_path(@question, anchor: "answer-#{@answer.id}")
     else
       render :edit
     end
