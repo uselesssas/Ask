@@ -5,5 +5,5 @@
 <% currently_at 'Home' %>
 
 <% if user_signed_in? %>
-  <h1 class="mb-4">Welcome, <%= current_user.name %></h1>
+  <h1 class="mb-4">Welcome, <%= current_user.name_or_email %></h1>
 <% end %>

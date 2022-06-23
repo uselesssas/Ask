@@ -3,9 +3,11 @@ class QuestionsController < ApplicationController
 
   def index
     @pagy, @questions = pagy Question.order(created_at: :desc)
+    @questions = @questions.decorate
   end
 
   def show
+    @question = @question.decorate
     # Ищет question по id
     # Инициализируем новый несохранённый answer
     @answer = @question.answers.build
@@ -13,6 +15,7 @@ class QuestionsController < ApplicationController
     @pagy, @answers = pagy @question.answers.order(created_at: :desc), items: 2
     # Массив со всеми answers сортированный по дате 2 способ
     # @answers = Answer.where(question_id: @question.id).order created_at: :desc
+    @answers = @answers.decorate
   end
 
   def new
