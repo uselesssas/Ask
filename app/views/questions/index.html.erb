@@ -9,7 +9,7 @@
 <%# Ссылка на форму создания и редактирования нового вопроса %>
 <%= link_to 'Ask a new question', new_question_path, class: 'btn btn-outline-dark mb-4' %>
 
-<%== pagy_bootstrap_nav @pagy %>
+<%= pagination @pagy %>
 
 <%# Карточки с вопросами %>
 <% @questions.each do |question| %>
@@ -34,4 +34,4 @@
   </article>
 <% end %>
 
-<%== pagy_bootstrap_nav @pagy %>
+<%= pagination @pagy %>
