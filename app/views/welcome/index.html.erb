@@ -4,5 +4,6 @@
 <%# header меню %>
 <% currently_at 'Home' %>
 
-<h1 class="mb-4">Welcome</h1>
-
+<% if user_signed_in? %>
+  <h1 class="mb-4">Welcome, <%= current_user.name %></h1>
+<% end %>
