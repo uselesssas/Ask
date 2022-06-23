@@ -7,12 +7,12 @@ class User < ApplicationRecord
 
   validate :password_presence
   # Проверка только при обновлении
-  validate :correct_old_password, on: :update
+  validate :correct_old_password, on: :update, if: -> { password.present? }
   # password должен быть равен password_confirmation
   # allow_blank: true - При обновлении профиля не требуеться обновлять пароль
   validates :password, confirmation: true, allow_blank: true, length: { minimum: 8, maximum: 70 }
 
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
 
   validate :password_complexity
 

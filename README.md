@@ -20,7 +20,7 @@ application.js
 
 * Ruby version: 3.1.2
 * Rails version: ~> 7
-* Added gems: pagy ~> 5, faker ~> 2, bcrypt ~> 3, draper ~> 4
+* Added gems: pagy ~> 5, faker ~> 2, bcrypt ~> 3, draper ~> 4, valid_email2 ~> 4
 * CSS: bootstrap
 * JS: webpack
 * Database: sqlite3 (In the future there will be PostgreSQL)

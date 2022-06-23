@@ -35,6 +35,8 @@ gem "pagy", "~> 5"
 
 gem "draper", "~> 4"
 
+gem "valid_email2", "~> 4"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
