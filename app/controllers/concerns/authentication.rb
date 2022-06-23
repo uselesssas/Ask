@@ -12,6 +12,10 @@ module Authentication
       current_user.present?
     end
 
+    def sign_in(user)
+      session[:user_id] = user.id
+    end
+
     # Делаем методы хелперами
     # Доступны и в контроллере и в представлении
     helper_method :current_user, :user_signed_in?
