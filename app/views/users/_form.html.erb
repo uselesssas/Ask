@@ -1,7 +1,7 @@
 <%# Проверка пользовательского ввода %>
 <%= render 'shared/errors', object: @user %>
 
-<%# Форма регистрации %>
+<%# Форма регистрации или обновления данных %>
 <%= form_with model: @user do |f| %>
   <div class="mb-3 row">
     <div class="col-sm-2 col-form-label">
@@ -43,5 +43,18 @@
     </div>
   </div>
 
-  <%= f.submit 'Register!', class: 'btn btn-success btn-lg' %>
+  <% unless @user.new_record? %>
+    <div class="mb-3 row">
+            <div class="col-sm-2 col-form-label">
+              <%=  f.label :old_password  %>
+            </div>
+
+      <div class="col-sm-10">
+        <%=  f.password_field :old_password, class: 'form-control form-control-lg'  %>
+      </div>
+    </div>
+  <% end %>
+
+  <%# Если user в БД есть он хочет Save, если нету он хочет Register! %>
+  <%= f.submit (@user.new_record? ? 'Register!' : "Save"), class: 'btn btn-success btn-lg' %>
 <% end %>
