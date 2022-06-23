@@ -7,13 +7,13 @@
 <h1 class="mb-4">Questions</h1>
 
 <%# Ссылка на форму создания и редактирования нового вопроса %>
-<%= link_to 'Ask a new question', new_question_path, class: 'btn btn-outline-dark mb-2' %>
+<%= link_to 'Ask a new question', new_question_path, class: 'btn btn-outline-dark mb-4' %>
 
 <%== pagy_bootstrap_nav @pagy %>
 
 <%# Карточки с вопросами %>
 <% @questions.each do |question| %>
-  <article class="card my-2">
+  <article class="card my-4">
     <div class="card-body">
       <h4><%= question.title %></h4>
 
