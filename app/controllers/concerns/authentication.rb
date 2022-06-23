@@ -16,6 +16,11 @@ module Authentication
       session[:user_id] = user.id
     end
 
+    def sign_out
+      @current_user = nil
+      session.delete :user_id
+    end
+
     # Делаем методы хелперами
     # Доступны и в контроллере и в представлении
     helper_method :current_user, :user_signed_in?
