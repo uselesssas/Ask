@@ -5,13 +5,14 @@ class SessionsController < ApplicationController
   def new; end
 
   def create
-    # render plain: params.to_yaml
+    # render plain: params.to_yaml and return
     user = User.find_by email: params[:email]
     # Если пользователь не ввёл email
     # user будет nil
     # знак & защищает и if будет false
     if user&.authenticate(params[:password])
       sign_in(user)
+      remember(user) if params[:remember_me] == '1'
       flash[:success] = "Welcome back, #{current_user.name_or_email}!"
       redirect_to root_path
     else
