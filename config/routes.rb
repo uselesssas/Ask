@@ -7,5 +7,9 @@ Rails.application.routes.draw do
     resources :answers, expect: %i[index show new]
   end
 
+  namespace :admin do
+    resources :users, only: %i[index]
+  end
+
   root 'welcome#index'
 end
