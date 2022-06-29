@@ -2,6 +2,7 @@ class User < ApplicationRecord
   # Создаём виртуальный атрибут который не попадает в БД
   attr_accessor :old_password, :remember_token
 
+  # Добавляет два виртуальных атрибута password и password_confirmation
   # validations: false - Отключаем валидации чтобы прописать их вручную
   has_secure_password validations: false
 
@@ -12,6 +13,9 @@ class User < ApplicationRecord
   # allow_blank: true - При обновлении профиля не требуеться обновлять пароль
   validates :password, confirmation: true, allow_blank: true, length: { minimum: 8, maximum: 70 }
 
+  # email должен присутствовать
+  # должен быть уникальным
+  # проверка волиднасти с помощью gem valid_email2
   validates :email, presence: true, uniqueness: true, 'valid_email_2/email': true
 
   validate :password_complexity

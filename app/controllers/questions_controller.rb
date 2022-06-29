@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
   def show
     @question = @question.decorate
     # Ищет question по id
-    # Инициализируем новый несохранённый answer
+    # Инициализируем новый несохранённый answer привязанный к question
     @answer = @question.answers.build
     # Массив со всеми answers сортированный по дате
     @pagy, @answers = pagy @question.answers.order(created_at: :desc), items: 2

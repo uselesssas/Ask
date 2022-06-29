@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+  # Для работы dom_id
   include ActionView::RecordIdentifier
 
   before_action :set_question!
@@ -13,8 +14,10 @@ class AnswersController < ApplicationController
       flash[:success] = 'Answer created!'
       redirect_to question_path(@question)
     else
+      @question = @question.decorate
       # Массив со всеми answers сортированный по дате
       @pagy, @answers = pagy @question.answers.order(created_at: :desc)
+      @answers = @answers.decorate
       render 'questions/show'
     end
   end

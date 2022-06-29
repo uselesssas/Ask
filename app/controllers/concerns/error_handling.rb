@@ -1,7 +1,9 @@
 module ErrorHandling
   extend ActiveSupport::Concern
 
+  # Добавляет код в класс где подключен модуль ErrorHandling
   included do
+    # обрабатывать ошибку ActiveRecord::RecordNotFound в методе notfound
     rescue_from ActiveRecord::RecordNotFound, with: :notfound
 
     private

@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
 
   def create
     # render plain: params.to_yaml and return
+    # Находим пользователя по email
     user = User.find_by email: params[:email]
     # Если пользователь не ввёл email
     # user будет nil
