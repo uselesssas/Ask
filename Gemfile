@@ -41,6 +41,8 @@ gem "rubyzip", "~> 2"
 
 gem "caxlsx", "~> 3"
 gem "caxlsx_rails", "~> 0.6"
+gem "rubyXL", "~> 3.4"
+gem "activerecord-import", "~> 1.2"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
